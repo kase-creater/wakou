@@ -35,7 +35,7 @@ function drawKuji(kujiStock) {
             console.log(kujiStock);  // 残りのくじの枚数を確認
             setTimeout(() => {
                 document.getElementById('result').textContent = "";
-            }, 10000)
+            }, 5000)
             return key;
         } else {
             random -= kujiStock[key];  // 次の等級の範囲に移動
