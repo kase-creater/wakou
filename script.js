@@ -1,7 +1,11 @@
-document.getElementById('drawButton').addEventListener('click', function() {
-    drawKuji(kujiStock);
-});
-
+// ページロード時にデータを復元
+window.onload = function() {
+    let savedStock = sessionStorage.getItem('kujiStock');
+    if (savedStock) {
+        kujiStock = JSON.parse(savedStock);  // 以前保存されたデータを復元
+        console.log("データが復元されました", kujiStock);
+    }
+};
 
 let kujiStock = {
     "1等": 20,
@@ -32,10 +36,14 @@ function drawKuji(kujiStock) {
         if (random < kujiStock[key]) {
             kujiStock[key]--;  // 引かれたくじの枚数を減らす
             document.getElementById('result').textContent = key;
+
+            // 変更されたくじのデータをsessionStorageに保存
+            sessionStorage.setItem('kujiStock', JSON.stringify(kujiStock));
+
             console.log(kujiStock);  // 残りのくじの枚数を確認
             setTimeout(() => {
                 document.getElementById('result').textContent = "";
-            }, 5000)
+            }, 5000);
             return key;
         } else {
             random -= kujiStock[key];  // 次の等級の範囲に移動
@@ -43,5 +51,7 @@ function drawKuji(kujiStock) {
     }
 }
 
-// 実際にくじを引いてみる例
-console.log(kujiStock);  // 残りのくじの枚数を確認
+// ボタンクリックでくじを引くイベントリスナー
+document.getElementById('drawButton').addEventListener('click', function() {
+    drawKuji(kujiStock);
+});
