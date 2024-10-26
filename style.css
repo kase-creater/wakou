@@ -7,8 +7,8 @@ body {
     background-color: #f0f0f0;
 }
 .container {
-    width: 400px;
-    height: 300px;
+    width: 450px;
+    height: 350px;
     text-align: center;
     background-color: white;
     padding: 20px;
@@ -22,8 +22,8 @@ button {
     padding: 10px 20px;
     background-color: palevioletred;
     font-size: 25px;
-    width: 200px;
-    height: 80px;
+    width: 250px;
+    height: 100px;
     color: white;
     border: none;
     border-radius: 5px;
@@ -31,6 +31,6 @@ button {
 }
 .result {
     margin-top: 10%;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
 }
